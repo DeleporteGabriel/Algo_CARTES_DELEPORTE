@@ -90,17 +90,20 @@ def statJoueur(Joueur):
 
     print("---Main---")
     Joueurmain = Joueur.getMain()
+    i = 0
     for i in range(len(Joueurmain)):
         print(Joueurmain[i].getName())
 
     print("---Jeu---")
     Joueurjeu = Joueur.getJeu()
+    i = 0
     for i in range(len(Joueurjeu)):
         print(Joueurjeu[i].getName())
 
 def tourJoueur(Joueur, Adverse):
 
     Joueurjeu = Joueur.getJeu()
+    i = 0
     for i in range(len(Joueurjeu)):
         if (Joueurjeu[i].getName() == "Bougross"):
             if (Joueurjeu[i].getPointCoeur() <= 0):
@@ -136,6 +139,7 @@ def tourJoueur(Joueur, Adverse):
                     if (choixCible == 1):
                         Joueur.getMain()[choixCarte-1].explosion(Adverse)
                     if (choixCible == 2):
+                        i = 0
                         for i in range(len(Adverse.getJeu())):
                             if (Adverse.getJeu()[i].getName() == "Bougross"):
                                 Joueur.getMain()[choixCarte-1].explosion(Adverse.getJeu()[i])
@@ -147,6 +151,8 @@ def tourJoueur(Joueur, Adverse):
             break
 
     Joueurjeu = Joueur.getJeu()
+    i = 0
+    j = 0
     for i in range(len(Joueurjeu)):
         if (Joueurjeu[i].getName() == "Bougross"):
             print("Le Bougross de", Joueur.getName(), "attaque !")
@@ -156,6 +162,7 @@ def tourJoueur(Joueur, Adverse):
                 if (adversejeu[j].getName() == "Bougross"):
                     Joueurjeu[i].attaqueEnnemis(adversejeu[j])
                     j = 999999
+                    i = 999999
                     presenceBougross = 1
             if (presenceBougross == 0):
                 Joueurjeu[i].attaqueEnnemis(J2)
